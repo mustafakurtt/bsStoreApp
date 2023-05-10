@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{5D42F6FF-965E-4FA2-AB86-42E82A9C4399}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{3A3044EC-4530-4670-ACBA-76B2CE77A2E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{7C70ACEE-709E-4EC1-9DE5-4C2A91265195}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D42F6FF-965E-4FA2-AB86-42E82A9C4399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D42F6FF-965E-4FA2-AB86-42E82A9C4399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D42F6FF-965E-4FA2-AB86-42E82A9C4399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D42F6FF-965E-4FA2-AB86-42E82A9C4399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A3044EC-4530-4670-ACBA-76B2CE77A2E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A3044EC-4530-4670-ACBA-76B2CE77A2E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A3044EC-4530-4670-ACBA-76B2CE77A2E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A3044EC-4530-4670-ACBA-76B2CE77A2E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C70ACEE-709E-4EC1-9DE5-4C2A91265195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C70ACEE-709E-4EC1-9DE5-4C2A91265195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C70ACEE-709E-4EC1-9DE5-4C2A91265195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C70ACEE-709E-4EC1-9DE5-4C2A91265195}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6AC08F4-3003-480B-ABAB-F229C7E26CEF}
+	EndGlobalSection
+EndGlobal
