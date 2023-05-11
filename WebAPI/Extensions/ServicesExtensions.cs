@@ -19,10 +19,10 @@ public static class ServicesExtensions
 
     public static void ConfigureRepositoryManager(this IServiceCollection services)
     {
-        services.AddTransient<IRepositoryManager, RepositoryManager>();
+        services.AddScoped<IRepositoryManager, RepositoryManager>();
     }
     public static void ConfigureServiceManager(this IServiceCollection services)
     {
-        services.AddTransient<IServiceManager,ServiceManager>();
+        services.AddScoped<IServiceManager,ServiceManager>();
     }
 }

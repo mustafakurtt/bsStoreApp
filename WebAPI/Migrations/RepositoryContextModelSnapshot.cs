@@ -7,7 +7,7 @@ using Repositories.EFCore;
 
 #nullable disable
 
-namespace Repositories.Migrations
+namespace WebAPI.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
     partial class RepositoryContextModelSnapshot : ModelSnapshot

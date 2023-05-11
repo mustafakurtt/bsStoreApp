@@ -8,10 +8,10 @@ using Repositories.EFCore;
 
 #nullable disable
 
-namespace Repositories.Migrations
+namespace WebAPI.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20230511144547_startPoint")]
+    [Migration("20230511154757_startPoint")]
     partial class startPoint
     {
         /// <inheritdoc />
