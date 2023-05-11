@@ -10,3 +10,4 @@ public interface IRepositoryBase<T>
     void Update(T entity);
     void Delete(T entity);
 }
+
