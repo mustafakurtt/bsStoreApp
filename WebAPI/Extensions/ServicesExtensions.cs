@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Repositories.Contracts;
 using Repositories.EFCore;
 
 namespace WebAPI.Extensions;
@@ -12,5 +13,10 @@ public static class ServicesExtensions
             options.UseSqlServer(configuration.GetConnectionString("sqlConnection"));
             //options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         });
+    }
+
+    public static void ConfigureRepositoryManager(this IServiceCollection services)
+    {
+        services.AddScoped<IRepositoryManager, RepositoryManager>();
     }
 }
