@@ -40,8 +40,16 @@ public class BooksController : ControllerBase
     [HttpPut("{id:int}")]
     public IActionResult UpdateOneBook([FromBody] Book book, [FromRoute(Name = "id")] int id)
     {
-       _serviceManager.BookService.UpdateOneBook(book);
-       return Ok();
+        try
+        {
+            _serviceManager.BookService.UpdateOneBook(book);
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return BadRequest();
+        }
     }
     [HttpDelete("{id:int}")]
     public IActionResult DeleteOneBook([FromRoute(Name = "id")] int id)

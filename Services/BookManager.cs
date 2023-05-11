@@ -8,10 +8,12 @@ namespace Services;
 public class BookManager : IBookService
 {
     private readonly IRepositoryManager _manager;
+    private readonly ILoggerService _logger;
 
-    public BookManager(IRepositoryManager manager)
+    public BookManager(IRepositoryManager manager, ILoggerService logger)
     {
         _manager = manager;
+        _logger = logger;
     }
 
     public IEnumerable<Book> GetAllBooks(bool trackChanges)
@@ -35,16 +37,27 @@ public class BookManager : IBookService
     {
         if (book is null) throw new ArgumentNullException(nameof(book));
         var entity = _manager.Book.GetOneBookById(book.Id,true);
-        if (entity is null) throw new Exception($"Book with id:{book.Id} could not be found");
-
-        _manager.Book.UpdateOneBook(book);
+        if (entity is null)
+        {
+            string message = $"The book with id:{book.Id} could not be found";
+            _logger.LogInfo(message);
+            throw new Exception(message);
+        }
+        entity.Title = book.Title;
+        entity.Price = book.Price;
+        _manager.Book.UpdateOneBook(entity);
         _manager.Save();
     }
 
     public void DeleteOneBook(int id)
     {
         var entity = _manager.Book.GetOneBookById(id, true);
-        if (entity is null) throw new Exception($"Book with id:{id} could not be found");
+        if (entity is null)
+        {
+            string message = $"The book with id:{id} could not be found";
+            _logger.LogInfo(message);
+            throw new Exception(message);
+        }
 
         _manager.Book.DeleteOneBook(entity);
         _manager.Save();

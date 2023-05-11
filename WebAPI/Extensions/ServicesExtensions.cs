@@ -25,4 +25,7 @@ public static class ServicesExtensions
     {
         services.AddScoped<IServiceManager,ServiceManager>();
     }
+
+    public static void ConfigureLoggerService(this IServiceCollection services) =>
+        services.AddSingleton<ILoggerService,LoggerManager>();
 }

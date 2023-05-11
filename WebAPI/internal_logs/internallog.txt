@@ -1,0 +1,18 @@
+2023-05-12 00:44:37.4315 Info Message Template Auto Format enabled
+2023-05-12 00:44:37.7431 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-12 00:44:37.7993 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstfk\source\repos\0jarvi3\bsStoreApp\WebAPI\nlog.config
+2023-05-12 00:46:25.8861 Info Message Template Auto Format enabled
+2023-05-12 00:46:25.9670 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-12 00:46:25.9911 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstfk\source\repos\0jarvi3\bsStoreApp\WebAPI\nlog.config
+2023-05-12 00:49:22.0616 Info Message Template Auto Format enabled
+2023-05-12 00:49:22.1477 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-12 00:49:22.1740 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstfk\source\repos\0jarvi3\bsStoreApp\WebAPI\nlog.config
+2023-05-12 00:50:55.6970 Info Message Template Auto Format enabled
+2023-05-12 00:50:55.7912 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-12 00:50:55.8171 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstfk\source\repos\0jarvi3\bsStoreApp\WebAPI\nlog.config
+2023-05-12 00:52:53.7248 Info Message Template Auto Format enabled
+2023-05-12 00:52:53.8897 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-12 00:52:53.9276 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstfk\source\repos\0jarvi3\bsStoreApp\WebAPI\nlog.config
+2023-05-12 00:55:04.9572 Info Message Template Auto Format enabled
+2023-05-12 00:55:05.0523 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-05-12 00:55:05.0907 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstfk\source\repos\0jarvi3\bsStoreApp\WebAPI\nlog.config
