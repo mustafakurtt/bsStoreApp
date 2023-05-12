@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Entities.Exceptions;
+using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
@@ -26,10 +27,8 @@ public class BooksController : ControllerBase
     [HttpGet("{id:int}")]
     public IActionResult GetBookById([FromRoute(Name = "id")] int id)
     {
-        throw new Exception("-----");
         var book = _serviceManager.BookService.GetOneBookById(id, false);
-        if (book is not null) return Ok(book);
-        return NotFound();
+        return Ok(book);
     }
 
     [HttpPost]

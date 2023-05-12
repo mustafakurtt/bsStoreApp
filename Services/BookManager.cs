@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Entities.Exceptions;
+using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Repositories.Contracts;
 using Services.Contracts;
@@ -22,9 +23,11 @@ public class BookManager : IBookService
         return _manager.Book.GetAllBooks(trackChanges);
     }
 
-    public Book? GetOneBookById(int id, bool trackChanges)
+    public Book GetOneBookById(int id, bool trackChanges)
     {
-        return _manager.Book.GetOneBookById(id, trackChanges);
+        var book = _manager.Book.GetOneBookById(id, trackChanges);
+        if (book is null) throw new BookNotFoundException(id);
+        return book;
     }
 
     public void CreateOneBook(Book book)
