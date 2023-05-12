@@ -27,7 +27,8 @@ public class BooksController : ControllerBase
     public IActionResult GetBookById([FromRoute(Name = "id")] int id)
     {
         var book = _serviceManager.BookService.GetOneBookById(id, false);
-        return Ok(book);
+        if (book is not null) return Ok(book);
+        return NotFound();
     }
 
     [HttpPost]
@@ -42,13 +43,14 @@ public class BooksController : ControllerBase
     {
         try
         {
+            if (id != book.Id) throw new Exception("Id's not matched");
             _serviceManager.BookService.UpdateOneBook(book);
             return Ok();
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
-            return BadRequest();
+            return NotFound();
         }
     }
     [HttpDelete("{id:int}")]

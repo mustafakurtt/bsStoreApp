@@ -1,6 +1,4 @@
-using Microsoft.EntityFrameworkCore;
 using NLog;
-using Repositories.EFCore;
 using WebAPI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

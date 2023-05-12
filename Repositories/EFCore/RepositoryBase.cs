@@ -18,7 +18,7 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class, ne
 
     public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges) =>
         !trackChanges ? _context.Set<T>().Where(expression).AsNoTracking() :
-         _context.Set<T>();
+         _context.Set<T>().Where(expression);
 
     public void Create(T entity) => _context.Set<T>().Add(entity);
 

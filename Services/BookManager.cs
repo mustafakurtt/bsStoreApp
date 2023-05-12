@@ -18,6 +18,7 @@ public class BookManager : IBookService
 
     public IEnumerable<Book> GetAllBooks(bool trackChanges)
     {
+        _logger.LogInfo( "Services.IBookService.GetAllBooks function called");
         return _manager.Book.GetAllBooks(trackChanges);
     }
 
@@ -36,10 +37,11 @@ public class BookManager : IBookService
     public void UpdateOneBook(Book book)
     {
         if (book is null) throw new ArgumentNullException(nameof(book));
-        var entity = _manager.Book.GetOneBookById(book.Id,true);
+        int id = book.Id;
+        var entity = _manager.Book.GetOneBookById(id,true);
         if (entity is null)
         {
-            string message = $"The book with id:{book.Id} could not be found";
+            string message = $"The book with id:{id} could not be found";
             _logger.LogInfo(message);
             throw new Exception(message);
         }
