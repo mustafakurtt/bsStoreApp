@@ -49,7 +49,6 @@ public class BooksController : ControllerBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
             return NotFound();
         }
     }
