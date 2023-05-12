@@ -26,6 +26,7 @@ public class BooksController : ControllerBase
     [HttpGet("{id:int}")]
     public IActionResult GetBookById([FromRoute(Name = "id")] int id)
     {
+        throw new Exception("-----");
         var book = _serviceManager.BookService.GetOneBookById(id, false);
         if (book is not null) return Ok(book);
         return NotFound();
@@ -41,16 +42,11 @@ public class BooksController : ControllerBase
     [HttpPut("{id:int}")]
     public IActionResult UpdateOneBook([FromBody] Book book, [FromRoute(Name = "id")] int id)
     {
-        try
-        {
-            if (id != book.Id) throw new Exception("Id's not matched");
-            _serviceManager.BookService.UpdateOneBook(book);
-            return Ok();
-        }
-        catch (Exception e)
-        {
-            return NotFound();
-        }
+      
+        if (id != book.Id) throw new Exception("Id's not matched");
+        _serviceManager.BookService.UpdateOneBook(book);
+        return Ok();
+        
     }
     [HttpDelete("{id:int}")]
     public IActionResult DeleteOneBook([FromRoute(Name = "id")] int id)
