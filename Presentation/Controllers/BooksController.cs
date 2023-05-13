@@ -1,4 +1,5 @@
-﻿using Entities.Exceptions;
+﻿using Entities.Dtos;
+using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -39,11 +40,11 @@ public class BooksController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public IActionResult UpdateOneBook([FromBody] Book book, [FromRoute(Name = "id")] int id)
+    public IActionResult UpdateOneBook([FromBody] BookDtoForUpdate bookDto, [FromRoute(Name = "id")] int id)
     {
       
-        if (id != book.Id) throw new Exception("Id's not matched");
-        _serviceManager.BookService.UpdateOneBook(book);
+        if (id != bookDto.Id) throw new Exception("Id's not matched");
+        _serviceManager.BookService.UpdateOneBook(id,bookDto);
         return Ok();
         
     }
