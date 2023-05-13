@@ -15,5 +15,6 @@ public class RepositoryContext : DbContext
         modelBuilder.ApplyConfiguration(new BookConfig());
     }
 
+
     public DbSet<Book> Books { get; set; }
 }

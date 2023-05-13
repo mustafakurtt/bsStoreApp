@@ -21,21 +21,21 @@ public class BooksController : ControllerBase
     [HttpGet]
     public IActionResult GetAllBooks()
     {
-        var books = _serviceManager.BookService.GetAllBooks(false);
+        var books = _serviceManager.BookService.GetAllBooksAsync(false);
         return Ok(books);
     }
 
     [HttpGet("{id:int}")]
     public IActionResult GetBookById([FromRoute(Name = "id")] int id)
     {
-        var book = _serviceManager.BookService.GetOneBookById(id, false);
+        var book = _serviceManager.BookService.GetOneBookByIdAsync(id, false);
         return Ok(book);
     }
 
     [HttpPost]
     public IActionResult CreateOneBook([FromBody] Book book)
     {
-        _serviceManager.BookService.CreateOneBook(book);
+        _serviceManager.BookService.CreateOneBookAsync(book);
         return StatusCode(201, book);
     }
 
@@ -44,21 +44,21 @@ public class BooksController : ControllerBase
     {
       
         if (id != bookDto.Id) throw new Exception("Id's not matched");
-        _serviceManager.BookService.UpdateOneBook(id,bookDto);
+        _serviceManager.BookService.UpdateOneBookAsync(id,bookDto);
         return Ok();
         
     }
     [HttpDelete("{id:int}")]
     public IActionResult DeleteOneBook([FromRoute(Name = "id")] int id)
     {
-       _serviceManager.BookService.DeleteOneBook(id);
+       _serviceManager.BookService.DeleteOneBookAsync(id);
        return Ok();
     }
 
     [HttpPatch("{id:int}")]
     public IActionResult PartiallyUpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<Book> bookPatch)
     {
-        var book = _serviceManager.BookService.PartiallyUpdateOneBook(id, bookPatch);
+        var book = _serviceManager.BookService.PartiallyUpdateOneBookAsync(id, bookPatch);
         return Ok(book);
     }
 }

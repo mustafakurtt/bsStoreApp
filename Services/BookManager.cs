@@ -21,30 +21,33 @@ public class BookManager : IBookService
         _mapper = mapper;
     }
 
-    public IEnumerable<Book> GetAllBooks(bool trackChanges)
+    public async Task<IEnumerable<BookDto>> GetAllBooksAsync(bool trackChanges)
     {
         _logger.LogInfo( "Services.IBookService.GetAllBooks function called");
-        return _manager.Book.GetAllBooks(trackChanges);
+        var books = _manager.Book.GetAllBooksAsync(trackChanges);
+        return _mapper.Map<IEnumerable<BookDto>>(books);
     }
 
-    public Book GetOneBookById(int id, bool trackChanges)
+    public async Task<Book> GetOneBookByIdAsync(int id, bool trackChanges)
     {
-        var book = _manager.Book.GetOneBookById(id, trackChanges);
+        var book = await _manager.Book.GetOneBookByIdAsync(id, trackChanges);
         if (book is null) throw new BookNotFoundException(id);
         return book;
     }
 
-    public void CreateOneBook(Book book)
+    public async Task<BookDto> CreateOneBookAsync(Book book)
     {
         if (book is null) throw new ArgumentNullException(nameof(book));
-        _manager.Book.CreateOneBook(book);
-        _manager.Save();
+        var entity = _mapper.Map<Book>(book);
+        _manager.Book.CreateOneBook(entity);
+        await _manager.SaveAsync();
+        return _mapper.Map<BookDto>(entity);
     }
 
-    public void UpdateOneBook(int id,BookDtoForUpdate bookDto)
+    public async Task UpdateOneBookAsync(int id,BookDtoForUpdate bookDto)
     {
         if (bookDto is null) throw new ArgumentNullException(nameof(bookDto));
-        var entity = _manager.Book.GetOneBookById(id,true);
+        var entity = await _manager.Book.GetOneBookByIdAsync(id, true);
         if (entity is null)
         {
             string message = $"The book with id:{id} could not be found";
@@ -54,12 +57,12 @@ public class BookManager : IBookService
 
         entity = _mapper.Map<Book>(bookDto);
         _manager.Book.UpdateOneBook(entity);
-        _manager.Save();
+        await _manager.SaveAsync();
     }
 
-    public void DeleteOneBook(int id)
+    public async Task DeleteOneBookAsync(int id)
     {
-        var entity = _manager.Book.GetOneBookById(id, true);
+        var entity = await _manager.Book.GetOneBookByIdAsync(id, true);
         if (entity is null)
         {
             string message = $"The book with id:{id} could not be found";
@@ -68,18 +71,18 @@ public class BookManager : IBookService
         }
 
         _manager.Book.DeleteOneBook(entity);
-        _manager.Save();
+        await _manager.SaveAsync();
     }
 
-    public Book PartiallyUpdateOneBook(int id, JsonPatchDocument<Book> bookPatch)
+    public async Task<Book> PartiallyUpdateOneBookAsync(int id, JsonPatchDocument<Book> bookPatch)
     {
         if (bookPatch is null) throw new ArgumentNullException(nameof(bookPatch));
-        var entity = _manager.Book.GetOneBookById(id,true);
+        var entity = await _manager.Book.GetOneBookByIdAsync(id,true);
         if (entity is null) throw new Exception($"Book with id:{id} could not be found");
         bookPatch.ApplyTo(entity);
-        _manager.Book.UpdateOneBook(entity);
-        _manager.Save();
-        return entity;
+        _manager.Book.UpdateOneBook(entity); 
+        await _manager.SaveAsync();
+        return entity ;
     }
 
 }

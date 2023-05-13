@@ -14,8 +14,8 @@ public class RepositoryManager : IRepositoryManager
     }
 
     public IBookRepository Book => _bookRepository.Value;
-    public void Save()
+    public async Task SaveAsync()
     {
-        _repositoryContext.SaveChanges();
+        await _repositoryContext.SaveChangesAsync();
     }
 }
